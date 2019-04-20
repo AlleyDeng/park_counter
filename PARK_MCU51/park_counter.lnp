@@ -1,0 +1,8 @@
+"STARTUP.obj",
+"lcd.obj",
+"main.obj",
+"key.obj",
+"uart.obj",
+"park.obj",
+"rc522.obj" 
+TO "park_counter" 
