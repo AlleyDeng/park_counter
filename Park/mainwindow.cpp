@@ -31,6 +31,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// 非阻塞延时
 void MainWindow::Sleep(int msec)
 {
 	QTime dieTime = QTime::currentTime().addMSecs(msec);
@@ -38,6 +39,7 @@ void MainWindow::Sleep(int msec)
 		QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+// 获取并显示时间
 void MainWindow::timerUpdate()
 {
     QDateTime time = QDateTime::currentDateTime();
@@ -47,6 +49,8 @@ void MainWindow::timerUpdate()
     ui->timeLabel->setText(str);
 }
 
+// 打开串口
+// 使能按钮，向下位机发送获取信息命令（剩余车位、可用状态）
 void MainWindow::on_openSerialButton_clicked()
 {
     if (ui->openSerialButton->text() == tr("打开串口"))
@@ -130,7 +134,7 @@ void MainWindow::readData()
         getMessage(tr(buf));
     }
     if (buf.mid(0, 4) == "UID:")
-    {
+    {   // 检测到刷卡动作
         readUID(buf.mid(4, 8));
     }
     buf.clear();
@@ -138,9 +142,10 @@ void MainWindow::readData()
 
 void MainWindow::readUID(QString comm)
 {
-    if (userMsg->uid == comm)  // 验证UID
+    if (userMsg->validateUID(comm))  // 验证UID
     {
-        //userMsg->getMsgFromFile();
+//         /*qDebug()*/        qDebug() << "UID: " << userMsg->uid << endl;
+        userMsg->getMsgFromFile();
         if (userMsg->isComeIn)      // enter into
         {
             userMsg->enterInto();
@@ -169,14 +174,15 @@ void MainWindow::readUID(QString comm)
             Sleep(15);
        }
        userMsg->saveMsgToFile();
-       /*qDebug()*/        qDebug() << "After save: " << userMsg->moneyBalance << endl;
     }
 }
 
+// 解析从下位机接收到的信息
+// 车位数量、可用状态
 void MainWindow::getMessage(QString comm)
 {
     if (comm[1] == '0')
-    {
+    {   // 第二位数据表示可用状态
         this->isAllow = false;
         ui->statusLabel->setText(tr("停止使用"));
     }
@@ -185,12 +191,13 @@ void MainWindow::getMessage(QString comm)
         this->isAllow = true;
         ui->statusLabel->setText(tr("正常使用"));
     }
-
+    // 从第三位起的三位数表示车位数量
     QString tmp = comm.mid(2, 3);
     this->capacity = tmp.toInt();
     ui->spaceLabel->setText(QString::number(capacity));
 }
 
+// 自定义文本框指令发送到下位机
 void MainWindow::on_sendButton_clicked()
 {
 	//QByteArray str = ui->textEdit->toPlainText().toLatin1() + "\n";
@@ -203,11 +210,13 @@ void MainWindow::on_sendButton_clicked()
 	}*/
 }
 
+// 清除文本显示
 void MainWindow::on_clearButton_clicked()
 {
     ui->textBrowser->clear();
 }
 
+// 设置空余车位
 void MainWindow::on_setSpaceButton_clicked()
 {
     spaceDialog = new setSpaceDialog(this->capacity, this);
@@ -225,6 +234,7 @@ void MainWindow::on_setSpaceButton_clicked()
     }
 }
 
+// 设置可用状态
 void MainWindow::on_setStatusButton_clicked()
 {
     serial->write("2SET\n");
@@ -243,12 +253,14 @@ void MainWindow::on_setStatusButton_clicked()
 	}
 }
 
+// 抬杆
 void MainWindow::on_barUpButton_clicked()
 {
     serial->write("3\n");
     Sleep(15);
 }
 
+// 降杆
 void MainWindow::on_barDownButton_clicked()
 {
     serial->write("4\n");

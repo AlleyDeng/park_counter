@@ -14,7 +14,7 @@ public:
     int caculatePrice();
     void getMsgFromFile();
     void saveMsgToFile();
-    bool validateUID(QByteArray buf);
+    bool validateUID(QString qUID);
 
     QString uid;
     bool isComeIn;
