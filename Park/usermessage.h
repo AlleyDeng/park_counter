@@ -18,6 +18,7 @@ public:
 
     QString uid;
     bool isComeIn;
+    bool isVip;
     QDateTime beginTime;
     QDateTime endTime;
     int pricePerHour;

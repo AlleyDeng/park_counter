@@ -55,8 +55,20 @@ void MainWindow::on_openSerialButton_clicked()
 {
     if (ui->openSerialButton->text() == tr("打开串口"))
     {
+        QStringList serialPortName;
+        foreach(const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
+        {
+            serialPortName << info.portName();
+            qDebug()<<"serialPortName:"<<info.portName();
+        }
+
         serial = new QSerialPort;
-        serial->setPortName("COM3");
+        if (serial->isOpen())
+        {
+            serial->clear();
+            serial->close();
+        }
+        serial->setPortName(serialPortName[0]);
         //设置波特率
         serial->setBaudRate(QSerialPort::Baud4800);
         //设置数据位数

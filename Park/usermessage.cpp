@@ -13,6 +13,11 @@ UserMessage::UserMessage()
 // 计算应支付的价格
 int UserMessage::caculatePrice()
 {
+    qDebug() << this->isVip;
+    if (this->isVip)
+    {
+        return 0;
+    }
     int time = this->beginTime.secsTo(endTime);
 
     return 5 * (time / 3600 + (time % 3600 ? 1 : 0)) ;
@@ -79,9 +84,11 @@ void UserMessage::getMsgFromFile()
                 }
                 if (xlsx.cellAt(row, 5))
                 {
-                    qDebug() <<"READ: " << xlsx.read(row, 5);
                     this->isComeIn = (int)(xlsx.read(row, 5)).value<double>();
-                    qDebug() << this->moneyBalance;
+                }
+                if (xlsx.cellAt(row, 6))
+                {
+                    this->isVip = (int)(xlsx.read(row, 6)).value<double>();
                 }
             }
         }
