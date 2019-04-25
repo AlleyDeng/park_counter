@@ -18,14 +18,11 @@ Hex Converter:   OH51.exe V2.7.0.0
 CPU DLL:         S8051.DLL V3.95.0.0
 Dialog DLL:      DP51.DLL V2.62.0.1 
 <h2>Project:</h2>
-C:\Users\deng_chao\Desktop\Code\park_counter.uvproj
+C:\Users\deng_chao\Desktop\PARK_MCU51\park_counter.uvproj
 Project File Date:  04/19/2019
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling main.c...
-compiling key.c...
-compiling uart.c...
 linking...
 *** WARNING L15: MULTIPLE CALL TO SEGMENT
     SEGMENT: ?PR?PRINTF?PRINTF
@@ -37,82 +34,3 @@ creating hex file from "park_counter"...
 </pre>
 </body>
 </html>
-
-    CALLER1: ?PR?INT0?KEY
-    CALLER2: ?PR?INT1?KEY
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?PRINTF?PRINTF
-    CALLER1: ?PR?INT1?KEY
-    CALLER2: ?PR?USART?UART
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  CAR_IN_OUT
-    MODULE:  key.obj (KEY)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  CAR_IN_OUT
-    MODULE:  key.obj (KEY)
-    ADDRESS: 05A3H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  CAR_IN_OUT
-    MODULE:  key.obj (KEY)
-    ADDRESS: 069BH
-Program Size: data=33.4 xdata=205 code=7072
-creating hex file from "park_counter"...
-"park_counter" - 0 Error(s), 7 Warning(s).
-'if'
-key.c(10): error C141: syntax error near '==', expected ')'
-key.c(10): error C129: missing ';' before '>'
-compiling uart.c...
-park.h(23): error C132: 'leave_out': not in formal parameter list
-park.h(23): error C141: syntax error near 'void'
-park.h(23): error C132: '_bar_up': not in formal parameter list
-park.h(24): error C132: '_bar_down': not in formal parameter list
-D:\Program Files\Keil_v5\C51\Inc\string.h(23): error C127: '_strcat': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(24): error C127: '_strncat': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(26): error C127: '_strcmp': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(27): error C127: '_strncmp': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(29): error C127: '_strcpy': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(30): error C127: '_strncpy': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(32): error C127: '_strlen': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(34): error C127: '_strchr': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(35): error C127: '_strpos': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(36): error C127: '_strrchr': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(37): error C127: '_strrpos': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(39): error C127: '_strspn': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(40): error C127: '_strcspn': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(41): error C127: '_strpbrk': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(42): error C127: '_strrpbrk': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(43): error C127: '_strstr': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(44): error C127: '_strtok': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(46): error C127: '_memcmp': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(47): error C127: '_memcpy': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(48): error C127: '_memchr': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(49): error C127: '_memccpy': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(50): error C127: '_memmove': invalid storage class
-D:\Program Files\Keil_v5\C51\Inc\string.h(51): error C127: '_memset': invalid storage class
-uart.c(8): error C132: '_sendMessage': not in formal parameter list
-uart.c(8): error C141: syntax error near '{'
-uart.c(9): error C136: 'EA': 'void' on variable
-uart.c(9): error C244: 'EA': can't initialize, bad type or class
-uart.c(9): error C136: 'EA': 'void' on variable
-uart.c(9): error C132: 'EA': not in formal parameter list
-uart.c(10): error C141: syntax error near 'if'
-uart.c(10): error C141: syntax error near '<string>'
-uart.c(10): error C141: syntax error near '==', expected ')'
-uart.c(14): error C141: syntax error near '<string>'
-uart.c(14): error C231: '_sendString': redefinition
-uart.c(15): error C141: syntax error near '<string>'
-compiling park.c...
-park.h(23): error C132: 'leave_out': not in formal parameter list
-park.h(23): error C141: syntax error near 'void'
-park.h(23): error C132: '_bar_up': not in formal parameter list
-park.h(24): error C132: '_bar_down': not in formal parameter list
-park.c(4): error C132: '_delay_ms': not in formal parameter list
-park.c(4): error C141: syntax error near '{'
-park.c(5): error C136: 'i': 'void' on variable
-park.c(5): error C132: 'i': not in formal parameter list
-park.c(5): error C136: 'j': 'void' on variable
-park.c(5): error C132: 'j': not in formal parameter list
-park.c(7): error C141: syntax error near 'for'
-park.c(7): error C141: syntax error near '=', expected ')'
-park.c(7): error C129: missing ';' before '>'
-Target not created.

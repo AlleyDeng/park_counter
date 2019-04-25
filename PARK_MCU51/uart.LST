@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   UART                                                              04/20/2019 14:05:03 PAGE 1   
+C51 COMPILER V9.53.0.0   UART                                                              04/25/2019 22:01:29 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   53   2              }
   54   1              if (num <= MAXSIZE)
   55   1              {
-C51 COMPILER V9.53.0.0   UART                                                              04/20/2019 14:05:03 PAGE 2   
+C51 COMPILER V9.53.0.0   UART                                                              04/25/2019 22:01:29 PAGE 2   
 
   56   2                      char temp[20];
   57   2                      
@@ -126,7 +126,7 @@ line level    source
  115   2                      LcdWriteCom(0x80);
  116   2                      LcdWriteStr(dis_data);
  117   2              }
-C51 COMPILER V9.53.0.0   UART                                                              04/20/2019 14:05:03 PAGE 3   
+C51 COMPILER V9.53.0.0   UART                                                              04/25/2019 22:01:29 PAGE 3   
 
  118   1                      
  119   1              sprintf(temp, "M%.1d%03d\n", isAllow, capacity);
@@ -190,10 +190,10 @@ line level    source
  177          
  178          void UsartConfiguration()
  179          {
-C51 COMPILER V9.53.0.0   UART                                                              04/20/2019 14:05:03 PAGE 4   
+C51 COMPILER V9.53.0.0   UART                                                              04/25/2019 22:01:29 PAGE 4   
 
- 180   1              SCON = 0x50;  
- 181   1              TMOD = 0x20;  
+ 180   1              SCON = 0x50;  // 串口工作方式1
+ 181   1              TMOD = 0x20;  // 定时器1工作方式2
  182   1              /* // 12M 4800bps
  183   1              PCON = 0x80; 
  184   1              TH1 = 0xF3;
@@ -201,7 +201,7 @@ line level    source
  186   1              */
  187   1              // 11.0592M 4800bps
  188   1              TH1 = 0xFA;      
- 189   1              TL1 = 0xF4;
+ 189   1              TL1 = 0xFA;
  190   1              
  191   1              ES = 1;
  192   1              EA = 1;

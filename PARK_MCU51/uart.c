@@ -177,8 +177,8 @@ void sendString(unsigned char *str)
 
 void UsartConfiguration()
 {
-	SCON = 0x50;  
-	TMOD = 0x20;  
+	SCON = 0x50;  // 串口工作方式1
+	TMOD = 0x20;  // 定时器1工作方式2
 	/* // 12M 4800bps
 	PCON = 0x80; 
 	TH1 = 0xF3;
@@ -186,7 +186,7 @@ void UsartConfiguration()
 	*/
 	// 11.0592M 4800bps
 	TH1 = 0xFA;	 
-	TL1 = 0xF4;
+	TL1 = 0xFA;
 	
 	ES = 1;
 	EA = 1;
