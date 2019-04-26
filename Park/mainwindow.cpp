@@ -68,6 +68,11 @@ void MainWindow::on_openSerialButton_clicked()
             serial->clear();
             serial->close();
         }
+        if (serialPortName.empty())
+        {
+            QMessageBox::about(NULL, "错误", "无法打开串口!     ");
+            return;
+        }
         serial->setPortName(serialPortName[0]);
         //设置波特率
         serial->setBaudRate(QSerialPort::Baud4800);
